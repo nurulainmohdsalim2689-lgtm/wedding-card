@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cik Wa Butik | Realisasikan Perkahwinan Impian Anda</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* CSS Variables for Garden Theme */
+        :root {
+            --primary-color: #7b9a74; /* Sage/Botanical Green */
+            --primary-dark: #5a7554; /* Darker Forest Green */
+            --secondary-color: #f4f7f3; /* Light Earthy/Cream background */
+            --text-dark: #2d362c; /* Charcoal Green for text */
+            --text-light: #5a665b;
+            --white: #ffffff;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Montserrat', sans-serif;
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+        }
+
+        .section-title span {
+            color: var(--primary-color);
+            font-style: italic;
+        }
+
+        .section-padding {
+            padding: 5rem 0;
+        }
+
+        /* Buttons (Soft Organic Shapes for Garden Theme) */
+        .btn {
+            display: inline-block;
+            padding: 12px 32px;
+            border-radius: 30px; /* Pill shape for a softer, organic look */
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(123, 154, 116, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+            border-color: #25D366;
+        }
+        
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 1rem 0;
+            transition: var(--transition);
+            border-bottom: 2px solid var(--secondary-color);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+        }
+
+        /* Hero Section (Video Background Added) */
+        .hero {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px; /* Offset for fixed nav */
+        }
+
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .video-background iframe {
+            width: 100vw;
+            height: 56.25vw; /* 16:9 Aspect Ratio */
+            min-height: 100vh;
+            min-width: 177.77vh; /* 16:9 Aspect Ratio */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(45, 54, 44, 0.45); /* Garden-tinted dark overlay */
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            color: var(--white);
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #f4f7f3;
+            margin-bottom: 2.5rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Features/Trust Section */
+        .features {
+            background-color: var(--secondary-color);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .feature-card {
+            padding: 2.5rem 2rem;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(123, 154, 116, 0.08);
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-bottom: 3px solid var(--primary-color);
+            box-shadow: 0 12px 25px rgba(123, 154, 116, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .service-card {
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            transition: var(--transition);
+            background-color: var(--white);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(123, 154, 116, 0.12);
+        }
+
+        .service-img {
+            height: 250px;
+            width: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .service-card:hover .service-img {
+            transform: scale(1.05);
+        }
+
+        .service-content {
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background-color: var(--secondary-color);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            aspect-ratio: 4/5;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(123, 154, 116, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-icon {
+            color: var(--white);
+            font-size: 2rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background-color: var(--white);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--secondary-color);
+            padding: 3rem 2.5rem;
+            border-radius: 12px;
+            text-align: center;
+            position: relative;
+            border: 1px solid rgba(123, 154, 116, 0.1);
+        }
+
+        .quote-icon {
+            color: var(--primary-color);
+            font-size: 2rem;
+            opacity: 0.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        .client-name {
+            font-weight: 600;
+            font-family: var(--font-heading);
+            color: var(--primary-dark);
+            font-size: 1.2rem;
+        }
+
+        .client-role {
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .stars {
+            color: #d4af37; /* Kept gold for stars for contrast */
+            margin-bottom: 1rem;
+        }
+
+        /* CTA Section (Garden Theme Background Image) */
+        .cta-section {
+            background: linear-gradient(rgba(45, 54, 44, 0.85), rgba(45, 54, 44, 0.85)), url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover fixed;
+            color: var(--white);
+            text-align: center;
+            padding: 7rem 0;
+        }
+
+        .cta-section .section-title {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            color: #e0e6e1;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #263027; /* Dark Forest Green */
+            color: #f4f7f3;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .footer-col p {
+            color: #c4d0c5;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .footer-col p i {
+            color: var(--primary-color);
+            margin-top: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #3b473c;
+            color: var(--white);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #3b473c;
+            color: #92a394;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: -100%;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 2rem 0;
+                gap: 1.5rem;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                transition: 0.4s ease;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links .btn {
+                margin-top: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header id="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">CikWa<span>Butik</span></a>
+            
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home">Utama</a></li>
+                <li><a href="#kelebihan">Kelebihan</a></li>
+                <li><a href="#pakej">Pakej</a></li>
+                <li><a href="#galeri">Galeri</a></li>
+                <li><a href="#testimoni">Testimoni</a></li>
+                <li><a href="#hubungi" class="btn btn-primary">Tempah Slot</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section with YouTube Background Video -->
+    <section class="hero" id="home">
+        
+        <div class="video-background">
+            <!-- YouTube iFrame. Added autoplay, mute (required for autoplay), loop, and hidden controls -->
+            <iframe 
+                src="https://www.youtube.com/embed/XpO2EZDGZss?autoplay=1&mute=1&controls=0&showinfo=0&loop=1&playlist=XpO2EZDGZss&playsinline=1" 
+                frameborder="0" 
+                allow="autoplay; encrypted-media" 
+                allowfullscreen>
+            </iframe>
+        </div>
+        
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content fade-in">
+            <h1>Realisasikan Majlis Perkahwinan <span>Impian Anda</span></h1>
+            <p>Dari busana eksklusif ke solekan memukau, kami memastikan setiap detik istimewa anda berjalan lancar dan sempurna tanpa tekanan.</p>
+            <div class="hero-btns">
+                <a href="#pakej" class="btn btn-primary">Lihat Pakej Kami</a>
+                <a href="https://wa.me/60123456789" class="btn btn-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i> WhatsApp Sekarang
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features / Value Proposition -->
+    <section class="features section-padding" id="kelebihan">
+        <div class="container">
+            <h2 class="section-title fade-in">Mengapa Pilih <span>Cik Wa Butik?</span></h2>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <i class="fas fa-gem feature-icon"></i>
+                    <h3>Rekaan Eksklusif</h3>
+                    <p>Koleksi busana pengantin kami direka khas dengan perincian teliti untuk menaikkan seri ratu sehari.</p>
+                </div>
+                <div class="feature-card fade-in" style="transition-delay: 0.1s;">
+                    <i class="fas fa-heart feature-icon"></i>
+                    <h3>Layanan Personal</h3>
+                    <p>Khidmat nasihat percuma dari perunding imej berpengalaman untuk memilih gaya terbaik anda.</p>
+                </div>
+                <div class="feature-card fade-in" style="transition-delay: 0.2s;">
+                    <i class="fas fa-hand-holding-usd feature-icon"></i>
+                    <h3>Pakej Mampu Milik</h3>
+                    <p>Pelbagai pilihan pakej perkahwinan lengkap yang boleh disesuaikan mengikut bajet anda.</p>
+                </div>
+                <div class="feature-card fade-in" style="transition-delay: 0.3s;">
+                    <i class="fas fa-spa feature-icon"></i>
+                    <h3>Bebas Tekanan</h3>
+                    <p>Kami uruskan segalanya dari A hingga Z. Anda hanya perlu senyum dan nikmati hari bahagia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services / Packages -->
+    <section class="services section-padding" id="pakej">
+        <div class="container">
+            <h2 class="section-title fade-in">Perkhidmatan <span>Utama Kami</span></h2>
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1594552072238-164789b7b9ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Busana Pengantin" class="service-img">
+                    <div class="service-content">
+                        <h3>Sewa Busana Eksklusif</h3>
+                        <p>Pilihan gaun, songket, dan baju kurung moden pelbagai saiz dan warna terkini untuk persandingan dan nikah.</p>
+                        <a href="https://wa.me/60123456789" class="btn btn-outline" style="margin-top: 1rem;">Tanya Harga</a>
+                    </div>
+                </div>
+                <!-- Service 2 -->
+                <div class="service-card fade-in" style="transition-delay: 0.1s;">
+                    <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Solekan Pengantin" class="service-img">
+                    <div class="service-content">
+                        <h3>Solekan Profesional (MUA)</h3>
+                        <p>Sentuhan solekan magis yang menonjolkan kecantikan semula jadi anda, tahan lama sepanjang majlis.</p>
+                        <a href="https://wa.me/60123456789" class="btn btn-outline" style="margin-top: 1rem;">Lihat Portfolio</a>
+                    </div>
+                </div>
+                <!-- Service 3 -->
+                <div class="service-card fade-in" style="transition-delay: 0.2s;">
+                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pakej Lengkap" class="service-img">
+                    <div class="service-content">
+                        <h3>Pakej Kahwin Lengkap</h3>
+                        <p>Pakej merangkumi busana, solekan, pelamin indah, dan fotografi. Penjimatan hebat untuk bakal pengantin.</p>
+                        <a href="https://wa.me/60123456789" class="btn btn-outline" style="margin-top: 1rem;">Minta Sebut Harga</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery section-padding" id="galeri">
+        <div class="container">
+            <h2 class="section-title fade-in">Galeri <span>Raja Sehari</span></h2>
+            <div class="gallery-grid">
+                <div class="gallery-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1546804784-896d0bb1fa2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pengantin 1">
+                    <div class="gallery-overlay"><i class="fas fa-leaf gallery-icon"></i></div>
+                </div>
+                <div class="gallery-item fade-in" style="transition-delay: 0.1s;">
+                    <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pengantin 2">
+                    <div class="gallery-overlay"><i class="fas fa-leaf gallery-icon"></i></div>
+                </div>
+                <div class="gallery-item fade-in" style="transition-delay: 0.2s;">
+                    <img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pengantin 3">
+                    <div class="gallery-overlay"><i class="fas fa-leaf gallery-icon"></i></div>
+                </div>
+                <div class="gallery-item fade-in" style="transition-delay: 0.3s;">
+                    <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pengantin 4">
+                    <div class="gallery-overlay"><i class="fas fa-leaf gallery-icon"></i></div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;" class="fade-in">
+                <a href="#" class="btn btn-outline">Lihat Lebih Banyak di Instagram</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials (Social Proof) -->
+    <section class="testimonials section-padding" id="testimoni">
+        <div class="container">
+            <h2 class="section-title fade-in">Apa Kata <span>Pengantin Kami?</span></h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card fade-in">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Sangat berpuas hati dengan servis Cik Wa Butik! Baju sangat cantik, fit dengan badan, dan MUA buat saya rasa macam puteri sehari. Sangat recommended!"</p>
+                    <h4 class="client-name">Siti Aishah</h4>
+                    <span class="client-role">Pengantin Jan 2023</span>
+                </div>
+                
+                <div class="testimonial-card fade-in" style="transition-delay: 0.1s;">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Dari awal booking sampai hari majlis, team Cik Wa sangat membantu. Harga pakej sangat berbaloi dengan kualiti baju dan pelamin yang diberikan."</p>
+                    <h4 class="client-name">Farah & Hafiz</h4>
+                    <span class="client-role">Pengantin Nov 2022</span>
+                </div>
+
+                <div class="testimonial-card fade-in" style="transition-delay: 0.2s;">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Saya agak cerewet bab baju, tapi Cik Wa sangat sabar melayan kerenah saya. Hasilnya? Ramai puji baju sanding saya nampak mewah dan eksklusif."</p>
+                    <h4 class="client-name">Nurul Huda</h4>
+                    <span class="client-role">Pengantin Mac 2023</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section (Conversion Focus) -->
+    <section class="cta-section" id="hubungi">
+        <div class="container fade-in">
+            <h2 class="section-title">Sudah Bersedia Untuk <span>Hari Bahagia Anda?</span></h2>
+            <p>Slot untuk tahun ini terhad. Jangan lepaskan peluang untuk menggayakan koleksi eksklusif kami. Tempah sesi konsultasi percuma bersama perunding perkahwinan kami hari ini.</p>
+            <div class="hero-btns">
+                <a href="https://wa.me/60123456789" class="btn btn-whatsapp btn-large" target="_blank" style="font-size: 1.1rem; padding: 15px 40px;">
+                    <i class="fab fa-whatsapp"></i> Hubungi Cik Wa Sekarang
+                </a>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: #b7c7b8;">*Balasan pantas dalam masa 24 jam.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo" style="color: white; display: block; margin-bottom: 1rem;">CikWa<span style="color: var(--primary-color);">Butik</span></a>
+                    <p style="color: #c4d0c5; line-height: 1.8;">Pakar perunding perkahwinan anda. Kami menyediakan kelengkapan busana, solekan, dan perancangan majlis yang merealisasikan impian setiap ratu sehari.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Hubungi Kami</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> No 123, Jalan Pengantin, Seksyen 7, 40000 Shah Alam, Selangor.</p>
+                    <p><i class="fas fa-phone-alt"></i> +60 12-345 6789</p>
+                    <p><i class="fas fa-envelope"></i> hello@cikwabutik.com</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Waktu Operasi</h4>
+                    <p>Selasa - Ahad: 10:00 Pagi - 7:00 Malam</p>
+                    <p>Isnin: Tutup</p>
+                    <p style="margin-top: 10px; font-style: italic; color: var(--primary-color);">*Sila buat temujanji (appointment) sebelum hadir.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Ikuti Kami</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Cik Wa Butik. Hak Cipta Terpelihara.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Interactions -->
+    <script>
+        // 1. Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when a link is clicked
+        const navItems = document.querySelectorAll('.nav-links a');
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // 2. Header Scroll Effect (Shadow)
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 15px rgba(0,0,0,0.08)';
+                header.style.padding = '0.5rem 0';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
+                header.style.padding = '1rem 0';
+            }
+        });
+
+        // 3. Scroll Animation (Fade In) using Intersection Observer
+        const faders = document.querySelectorAll('.fade-in');
+        
+        const appearOptions = {
+            threshold: 0.15, // Trigger when 15% of the element is visible
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('appear');
+                    appearOnScroll.unobserve(entry.target); // Stop observing once faded in
+                }
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+    </script>
+</body>
+</html>
